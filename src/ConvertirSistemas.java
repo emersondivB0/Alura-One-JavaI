@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JMenuBar;
 
-public class Convertidor extends JFrame {
+public class ConvertirSistemas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -28,7 +28,7 @@ public class Convertidor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Convertidor frame = new Convertidor();
+					ConvertirSistemas frame = new ConvertirSistemas();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +42,7 @@ public class Convertidor extends JFrame {
 	 */
     
 
-	public Convertidor() {
+	public ConvertirSistemas() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -50,63 +50,25 @@ public class Convertidor extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setTitle("Conversor de Monedas");
+		setTitle("Conversor de Unidades");
 		
-		//#################################################################################
-		// Crear un botón de cerrar
-		/*
-	    JButton btnCerrar = new JButton("x");
-	    btnCerrar.addActionListener(new ActionListener() {
-
-		public void actionPerformed(ActionEvent e) {
-	            dispose(); // Cerrar la ventana
-	        }
-	    });
-	    btnCerrar.setBounds(405, 0, 41, 25);
-	    contentPane.add(btnCerrar);
-
-	    // Crear un botón de minimizar
-	    JButton btnMinimizar = new JButton("_");
-	    btnMinimizar.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	            setExtendedState(JFrame.ICONIFIED); // Minimizar la ventana
-	        }
-	    });
-	    btnMinimizar.setBounds(366, 0, 41, 25);
-	    contentPane.add(btnMinimizar);
-
-	    // Crear un botón de maximizar/restaurar
-	    JButton btnMaximizar = new JButton("+");
-	    btnMaximizar.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	            if ((getExtendedState() & JFrame.MAXIMIZED_BOTH) == JFrame.MAXIMIZED_BOTH) {
-	                setExtendedState(JFrame.NORMAL); // Restaurar la ventana
-	            } else {
-	                setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizar la ventana
-	            }
-	        }
-	    });
-	    btnMaximizar.setBounds(325, 0, 41, 25);
-	    contentPane.add(btnMaximizar);
-	    */
-		//#################################################################################
 
 		JComboBox<String> comboBox = new JComboBox<>();
 		comboBox.setBounds(39, 88, 165, 26);
-		comboBox.addItem("Peso chileno");
-		comboBox.addItem("Dólar");
-		comboBox.addItem("Euro");
-		comboBox.addItem("Libra esterlina");
+		comboBox.addItem("Pulgada (in)");
+		comboBox.addItem("Pie (ft)");
+		comboBox.addItem("Yarda (yd)");
+		comboBox.addItem("Milla (mile)");
 		comboBox.addItem("Yen japonés");
 		comboBox.addItem("Won surcoreano");
 		contentPane.add(comboBox);
 
 		JComboBox<String> comboBox_1 = new JComboBox<>();
 		comboBox_1.setBounds(252, 88, 155, 26);
-		comboBox_1.addItem("Peso chileno");
-		comboBox_1.addItem("Dólar");
-		comboBox_1.addItem("Euro");
-		comboBox_1.addItem("Libra esterlina");
+		comboBox_1.addItem("Milímetro (mm)");
+		comboBox_1.addItem("Centímetro (cm)");
+		comboBox_1.addItem("Metro (m)");
+		comboBox_1.addItem("Kilómetro (km)");
 		comboBox_1.addItem("Yen japonés");
 		comboBox_1.addItem("Won surcoreano");
 		contentPane.add(comboBox_1);
@@ -210,7 +172,7 @@ public class Convertidor extends JFrame {
 			}
 		});
 
-		JLabel lblConvertidorDeMonedas = DefaultComponentFactory.getInstance().createTitle("Conversor de Monedas");
+		JLabel lblConvertidorDeMonedas = DefaultComponentFactory.getInstance().createTitle("Convertidor de Monedas");
 		lblConvertidorDeMonedas.setBounds(141, 28, 177, 48);
 		contentPane.add(lblConvertidorDeMonedas);
 	}
