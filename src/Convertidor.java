@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 
 public class Convertidor extends JFrame {
 
@@ -20,28 +21,7 @@ public class Convertidor extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField txtInserteMonto;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Convertidor frame = new Convertidor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
     
-
 	public Convertidor() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -51,45 +31,6 @@ public class Convertidor extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setTitle("Conversor de Monedas");
-		
-		//#################################################################################
-		// Crear un botón de cerrar
-		/*
-	    JButton btnCerrar = new JButton("x");
-	    btnCerrar.addActionListener(new ActionListener() {
-
-		public void actionPerformed(ActionEvent e) {
-	            dispose(); // Cerrar la ventana
-	        }
-	    });
-	    btnCerrar.setBounds(405, 0, 41, 25);
-	    contentPane.add(btnCerrar);
-
-	    // Crear un botón de minimizar
-	    JButton btnMinimizar = new JButton("_");
-	    btnMinimizar.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	            setExtendedState(JFrame.ICONIFIED); // Minimizar la ventana
-	        }
-	    });
-	    btnMinimizar.setBounds(366, 0, 41, 25);
-	    contentPane.add(btnMinimizar);
-
-	    // Crear un botón de maximizar/restaurar
-	    JButton btnMaximizar = new JButton("+");
-	    btnMaximizar.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	            if ((getExtendedState() & JFrame.MAXIMIZED_BOTH) == JFrame.MAXIMIZED_BOTH) {
-	                setExtendedState(JFrame.NORMAL); // Restaurar la ventana
-	            } else {
-	                setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizar la ventana
-	            }
-	        }
-	    });
-	    btnMaximizar.setBounds(325, 0, 41, 25);
-	    contentPane.add(btnMaximizar);
-	    */
-		//#################################################################################
 
 		JComboBox<String> comboBox = new JComboBox<>();
 		comboBox.setBounds(39, 88, 165, 26);
@@ -206,6 +147,16 @@ public class Convertidor extends JFrame {
 			@Override
 			public void focusLost(FocusEvent e) {
 				// TODO Auto-generated method stub
+				try {
+		            // Intenta convertir el valor ingresado a un número
+		            double monto = Double.parseDouble(txtInserteMonto.getText());
+		            // Si se pudo convertir, actualiza el JTextField con el valor formateado
+		            txtInserteMonto.setText(String.format("%.2f", monto));
+		        } catch (NumberFormatException ex) {
+		            // Captura la excepción si el valor ingresado no es un número válido
+		            JOptionPane.showMessageDialog(null, "Por favor ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+		            // Puedes realizar otras acciones aquí, como borrar el valor ingresado o mostrar un mensaje de error
+		        }
 
 			}
 		});
