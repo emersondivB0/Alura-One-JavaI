@@ -16,6 +16,8 @@ public class Main extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private Convertidor convertidorFrame;
+	private ConvertirSistemas convertidorFrame2;
 
 	/**
 	 * Launch the application.
@@ -51,8 +53,12 @@ public class Main extends JFrame {
 		contentPane.add(btnMonedas);
 		 btnMonedas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Convertidor frame = new Convertidor();
-                frame.setVisible(true);
+            	if (convertidorFrame == null) {
+                    convertidorFrame = new Convertidor();
+                }
+                convertidorFrame.setVisible(true);
+                //Convertidor frame = new Convertidor();
+                //frame.setVisible(true);
             }
         });
 		 
@@ -75,8 +81,12 @@ public class Main extends JFrame {
 		contentPane.add(lblLongitud);
 		btnUnidades.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ConvertirSistemas frame = new ConvertirSistemas();
-                frame.setVisible(true);
+            	if (convertidorFrame2 == null) {
+                    convertidorFrame2 = new ConvertirSistemas();
+                }
+                convertidorFrame2.setVisible(true);
+                //ConvertirSistemas frame = new ConvertirSistemas();
+                //frame.setVisible(true);
             }
         });
 
