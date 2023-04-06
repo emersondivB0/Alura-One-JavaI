@@ -8,6 +8,9 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -344,17 +347,21 @@ public class ConvertirSistemas extends JFrame {
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				// TODO Auto-generated method stub
-				try {
-		            // Intenta convertir el valor ingresado a un número
-		            double monto = Double.parseDouble(txtInserteMonto.getText());
-		            // Si se pudo convertir, actualiza el JTextField con el valor formateado
-		            txtInserteMonto.setText(String.format("%.2f", monto));
-		        } catch (NumberFormatException ex) {
-		            // Captura la excepción si el valor ingresado no es un número válido
-		            JOptionPane.showMessageDialog(null, "Por favor ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
-		            // Puedes realizar otras acciones aquí, como borrar el valor ingresado o mostrar un mensaje de error
-		        }
+				// Crea un patrón de formato que siempre utiliza punto decimal
+			    DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+			    symbols.setDecimalSeparator('.');
+			    String pattern = "#0.00";
+			    DecimalFormat format = new DecimalFormat(pattern, symbols);
+			    try {
+			        // Intenta convertir el valor ingresado a un número utilizando el patrón creado
+			        double monto = format.parse(txtInserteMonto.getText()).doubleValue();
+			        // Si se pudo convertir, actualiza el JTextField con el valor formateado
+			        txtInserteMonto.setText(format.format(monto));
+			    } catch (ParseException ex) {
+			        // Captura la excepción si el valor ingresado no es un número válido
+			        JOptionPane.showMessageDialog(null, "Por favor ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+			        // Puedes realizar otras acciones aquí, como borrar el valor ingresado o mostrar un mensaje de error
+			    }
 
 			}
 		});
