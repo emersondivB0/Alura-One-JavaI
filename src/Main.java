@@ -18,6 +18,7 @@ public class Main extends JFrame {
 	private JPanel contentPane;
 	private Convertidor convertidorFrame;
 	private ConvertirSistemas convertidorFrame2;
+	private static ImageIcon icono = new ImageIcon("Icons/download.png");
 
 	/**
 	 * Launch the application.
@@ -27,6 +28,7 @@ public class Main extends JFrame {
 			public void run() {
 				try {
 					Main frame = new Main();
+					frame.setIconImage(Main.icono.getImage());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,6 +40,9 @@ public class Main extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	
+	
 	public Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
